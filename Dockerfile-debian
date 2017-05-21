@@ -1,0 +1,47 @@
+###
+# vkucukcakar/base
+# Base Docker image with common tools
+# Copyright (c) 2017 Volkan Kucukcakar
+# 
+# This file is part of vkucukcakar/base.
+# 
+# vkucukcakar/base is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+# 
+# vkucukcakar/base is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
+# This copyright notice and license must be retained in all files and derivative works.
+###
+
+FROM debian:stretch-slim
+
+LABEL maintainer "Volkan Kucukcakar"
+
+# Install wget, curl, netcat (for the nc command that can be used for healthcheck of some services later), gettext-base (for envsubst command that can be used for configuration scripts later), procps (for ps command that does not exist in debian stretch image)
+RUN apt-get update -q && apt-get install -y \
+    wget \
+    curl \
+    netcat \
+    gettext-base \
+    procps
+
+# Note: ca-certificates already installed on Debian
+    
+# Clean up the apt cache
+RUN rm -rf /var/lib/apt/lists/*
+
+# Install tini (for running as PID 1)
+ENV TINI_VERSION v0.14.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
+# Entrypoint, tini as PID 1
+ENTRYPOINT ["/tini", "--"]
