@@ -25,11 +25,11 @@ FROM debian:stretch-slim
 
 LABEL maintainer "Volkan Kucukcakar"
 
-# Install wget, curl, netcat (for the nc command that can be used for healthcheck of some services later), gettext-base (for envsubst command that can be used for configuration scripts later), procps (for ps command that does not exist in debian stretch image)
+# Install wget, curl, netcat-openbsd (for healthcheck with nc command, unix socket support etc...), gettext-base (for envsubst command that can be used for configuration scripts later), procps (for ps command that does not exist in debian stretch image)
 RUN apt-get update -q && apt-get install -y \
     wget \
     curl \
-    netcat \
+    netcat-openbsd \
     gettext-base \
     procps
 

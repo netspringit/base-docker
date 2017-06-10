@@ -21,19 +21,20 @@
 # This copyright notice and license must be retained in all files and derivative works.
 ###
 
-FROM alpine:3.5
+FROM alpine:3.6
 
 LABEL maintainer "Volkan Kucukcakar"
 
-# Install bash (for basic level of shell compatibility), wget, curl, netcat (for the nc command that can be used for healthcheck of some services later), gettext (for envsubst command that can be used for configuration scripts later), tini (for running as PID 1), ca-certificates
+# Install bash (for basic level of shell compatibility), wget, curl, netcat-openbsd (for healthcheck with nc command, unix socket support etc...), gettext (for envsubst command that can be used for configuration scripts later), tini (for running as PID 1), ca-certificates
 RUN apk add --update \
     bash \
     curl \
+    netcat-openbsd \
     gettext \
     tini \
     ca-certificates
     
-# Note: wget, netcat, procps already installed on Alpine
+# Note: wget, procps already installed on Alpine
 
 # Note: Installing bash shell gives only basic level of script syntax compatibility. GNU Coreutils and GNU equivalents of tools line awk, grep, sed etc. are not included in this image
     
