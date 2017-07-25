@@ -40,7 +40,7 @@ RUN apk add --update \
 # Note: Installing bash shell gives only basic level of script syntax compatibility. GNU Coreutils and GNU equivalents of tools line awk, grep, sed etc. are not included in this image
 
 # Update ca certificates
-update-ca-certificates
+RUN update-ca-certificates
     
 # Clean up the apk cache
 RUN rm -rf /var/cache/apk/*
