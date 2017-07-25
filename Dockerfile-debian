@@ -25,7 +25,7 @@ FROM debian:stretch-slim
 
 LABEL maintainer "Volkan Kucukcakar"
 
-# Install wget, curl, netcat-openbsd (for healthcheck with nc command, unix socket support etc...), gettext-base (for envsubst command that can be used for configuration scripts later), procps (for ps command that does not exist in debian stretch image)
+# Install wget, openssl (may be required by wget), curl, netcat-openbsd (for healthcheck with nc command, unix socket support etc...), gettext-base (for envsubst command that can be used for configuration scripts later), procps (for ps command that does not exist in debian stretch image)
 RUN apt-get update -q && apt-get install -y \
     wget \
     curl \
@@ -33,7 +33,7 @@ RUN apt-get update -q && apt-get install -y \
     gettext-base \
     procps
 
-# Note: ca-certificates already installed on Debian
+# Note: openssl, ca-certificates already installed on Debian
     
 # Clean up the apt cache
 RUN rm -rf /var/lib/apt/lists/*

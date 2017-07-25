@@ -25,9 +25,10 @@ FROM alpine:3.6
 
 LABEL maintainer "Volkan Kucukcakar"
 
-# Install bash (for basic level of shell compatibility), wget, curl, netcat-openbsd (for healthcheck with nc command, unix socket support etc...), gettext (for envsubst command that can be used for configuration scripts later), tini (for running as PID 1), ca-certificates
+# Install bash (for basic level of shell compatibility), wget, openssl (may be required by wget), curl, netcat-openbsd (for healthcheck with nc command, unix socket support etc...), gettext (for envsubst command that can be used for configuration scripts later), tini (for running as PID 1), ca-certificates
 RUN apk add --update \
     bash \
+    openssl \
     curl \
     netcat-openbsd \
     gettext \
@@ -37,6 +38,9 @@ RUN apk add --update \
 # Note: wget, procps already installed on Alpine
 
 # Note: Installing bash shell gives only basic level of script syntax compatibility. GNU Coreutils and GNU equivalents of tools line awk, grep, sed etc. are not included in this image
+
+# Update ca certificates
+update-ca-certificates
     
 # Clean up the apk cache
 RUN rm -rf /var/cache/apk/*
