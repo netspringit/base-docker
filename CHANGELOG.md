@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.4
+
+- Upgraded parent image to Alpine 3.11
+- Removed support for Debian based image
+- Moved Debian related files to "legacy" folder for documentary purposes
+
 ## v1.0.3
 
 - Fixed image size reduction

@@ -21,7 +21,7 @@
 # This copyright notice and license must be retained in all files and derivative works.
 ###
 
-FROM alpine:3.6
+FROM alpine:3.11
 
 LABEL maintainer "Volkan Kucukcakar"
 
