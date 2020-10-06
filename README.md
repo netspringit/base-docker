@@ -9,7 +9,8 @@ Base Docker image with common tools
 
 ## Supported tags
 
-* alpine, latest
+* latest (Alpine based)
+* Some version based tags can be available, please see tags section on Docker Hub
 
 ## Examples
 
