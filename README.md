@@ -14,7 +14,7 @@ Base Docker image with common tools
 
 ## Examples
 
-	$ docker run -it --rm --name test-vkucukcakar-base vkucukcakar/base:alpine /bin/bash
+	$ docker run -it --rm --name test-vkucukcakar-base vkucukcakar/base /bin/bash
 
 ## Notice
 
