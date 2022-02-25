@@ -23,7 +23,7 @@
 
 FROM alpine:3.11
 
-LABEL maintainer "Volkan Kucukcakar"
+LABEL maintainer "Claudio Masia"
 
 # Install bash (for basic level of shell compatibility), wget, openssl (may be required by wget), curl, netcat-openbsd (for healthcheck with nc command, unix socket support etc...), gettext (for envsubst command that can be used for configuration scripts later), tini (for running as PID 1), ca-certificates
 RUN apk add --update \
